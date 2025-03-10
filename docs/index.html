@@ -53,7 +53,7 @@
       <p>The design incorporates a NEMA 17 stepper motor with a GT2 timing pulley system. Two approaches were considered: a belt-driven mechanism versus a direct pivoting joint with high-quality bearings for smooth rotation and precision.</p>
       <p>For further mechanical details, visit <a href="https://example.com/mechanical-resources" target="_blank">this resource</a>.</p>
       <div class="image-container">
-        <img src="/Users/rustymyers/Desktop/Robotic_build/Robotic_build/images/gearbox.png" alt="Raspberry Pi Setup">
+        <img src="/Users/rustymyers/Desktop/Robotic_build/Robotic_build/docs/images/gearbox.png" alt="Raspberry Pi Setup">
         <p class="fig-caption"><strong>Fig. 1.</strong>Gearbox 28:1 reduction</p>
 
       </div>
@@ -66,7 +66,7 @@
       <p>The objective is to power the Raspberry Pi 5 using a 12V 12A power supply stepped down to 5V by a Pololu D36V50F5 buck converter. The design intends to power the Pi through its USB‑C port, which requires a resistor network (5.1kΩ pull‑down on the CC pins) to signal a valid 5V source.</p>
       <p><strong>Important Note:</strong> There is an untested issue regarding the USB‑C Power Delivery (PD) handshake required by the Raspberry Pi 5. Although the Pololu converter is designed to provide a stable 5V/5A output, some resources indicate potential random shutdowns or power warnings. An alternative is to power the Pi via its GPIO pins, though that method lacks the inherent fail safes of the dedicated USB‑C interface. Once the system is implemented, further updates will be provided on its performance and stability.</p>
       <div class="image-container">
-        <img src="/Users/rustymyers/Desktop/Robotic_build/Robotic_build/images/rpi5.png" alt="Raspberry Pi Setup">
+        <img src="/Users/rustymyers/Desktop/Robotic_build/Robotic_build/docs/images/rpi5.png" alt="Raspberry Pi Setup">
         <p class="fig-caption"><strong>Fig. 1.</strong> rpi5 show with serial line for comunication running to arduino, mounted to side of power control box.</p>
 
       </div>
@@ -74,7 +74,7 @@
       <h3>Motor Control & Stepper Systems</h3>
       <p>Two NEMA 17 stepper motors (rated at ~2A) are controlled using TB6600 drivers and an Arduino. The system utilizes a 24V, 15A power supply, with buck converters stepping down the voltage for both the Arduino (approx. 8V) and the Raspberry Pi (5V). Safety measures such as proper grounding and fuse protection are implemented to minimize electrical issues.</p>
       <div class="image-container">
-        <img src="/Users/rustymyers/Desktop/Robotic_build/Robotic_build/images/Power_setup.png" alt="Stepper Motor Setup">
+        <img src="/Users/rustymyers/Desktop/Robotic_build/Robotic_build/docs/images/Power_setup.png" alt="Stepper Motor Setup">
       </div>
       <p>For more details on the electronics setup, visit <a href="https://example.com/electronics-resources" target="_blank">this resource</a>.</p>
       
