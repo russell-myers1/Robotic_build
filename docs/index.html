@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robotic Arm & Power System Project</title>
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Robotic Arm & Power System Project</h1>
+    <p>From Concept to Creation</p>
+  </header>
+  <nav>
+    <a href="#introduction">Introduction</a>
+    <a href="#mechanical">Mechanical</a>
+    <a href="#electronics">Electronics</a>
+    <a href="#control">Control</a>
+    <a href="#milestones">Milestones</a>
+    <a href="#resources">Resources</a>
+    <a href="#conclusion">Conclusion</a>
+  </nav>
+  <div class="container">
+    <!-- Introduction Section -->
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>This article documents the journey of building a robotic arm, integrating mechanical engineering with advanced electronics and control systems. It covers pulley ratios, gear setups, power system design for a Raspberry Pi 5, and the challenges overcome in creating a precise motion control system.</p>
+      <div class="image-container">
+        <img src="images/header.jpg" alt="Project Header Image">
+      </div>
+    </section>
+
+    <!-- Mechanical Transmission & Motion Control -->
+    <section id="mechanical">
+      <h2>Mechanical Transmission & Motion Control</h2>
+      <h3>Pulley to Gear Ratio Insights</h3>
+      <p>A 20‑tooth driving pulley paired with an 80‑tooth driven pulley results in a 4:1 speed reduction. This is functionally equivalent to a single‑stage planetary gearset. For instance, a sun gear with 24 teeth and a ring gear with 72 teeth yields a 4:1 ratio using the formula:</p>
+      <p><strong>Gear Ratio = 1 + (Ring Teeth / Sun Teeth) = 1 + (72 / 24) = 4:1</strong></p>
+      <div class="image-container">
+        <img src="images/mechanical_diagram.jpg" alt="Mechanical Diagram">
+      </div>
+      
+      <h3>Additional Gear Setup for the Rotational Base</h3>
+      <p>For the rotational base, an alternative gear setup is employed using a 15‑tooth pinion gear paired with a 108‑tooth hub mount gear, both sourced from GoBilda:</p>
+      <ul>
+        <li><a href="https://www.gobilda.com/2303-series-steel-mod-0-8-pinion-gear-6mm-d-bore-15-tooth/" target="_blank">15‑Tooth Pinion Gear</a></li>
+        <li><a href="https://www.gobilda.com/2302-series-aluminum-mod-0-8-hub-mount-gear-32mm-bore-108-tooth/" target="_blank">108‑Tooth Hub Mount Gear</a></li>
+      </ul>
+      <p>This combination provides a reduction ratio of approximately 7.2:1 (108 ÷ 15). Used alongside the timing pulley's 4:1 reduction, this setup enhances the drive for the rotational base by providing increased torque and refined motion control.</p>
+      
+      <h3>Robotic Arm Motion Control</h3>
+      <p>The design incorporates a NEMA 17 stepper motor with a GT2 timing pulley system. Two approaches were considered: a belt-driven mechanism versus a direct pivoting joint with high-quality bearings for smooth rotation and precision.</p>
+      <p>For further mechanical details, visit <a href="https://example.com/mechanical-resources" target="_blank">this resource</a>.</p>
+      <div class="image-container">
+        <img src="/Users/rustymyers/Desktop/Robot_Arm/images/gearbox.png" alt="Raspberry Pi Setup">
+        <p class="fig-caption"><strong>Fig. 1.</strong>Gearbox 28:1 reduction</p>
+
+      </div>
+    </section>
+
+    <!-- Electronics & Power Management -->
+    <section id="electronics">
+      <h2>Electronics & Power Management</h2>
+      <h3>Powering the Raspberry Pi 5</h3>
+      <p>The objective is to power the Raspberry Pi 5 using a 12V 12A power supply stepped down to 5V by a Pololu D36V50F5 buck converter. The design intends to power the Pi through its USB‑C port, which requires a resistor network (5.1kΩ pull‑down on the CC pins) to signal a valid 5V source.</p>
+      <p><strong>Important Note:</strong> There is an untested issue regarding the USB‑C Power Delivery (PD) handshake required by the Raspberry Pi 5. Although the Pololu converter is designed to provide a stable 5V/5A output, some resources indicate potential random shutdowns or power warnings. An alternative is to power the Pi via its GPIO pins, though that method lacks the inherent fail safes of the dedicated USB‑C interface. Once the system is implemented, further updates will be provided on its performance and stability.</p>
+      <div class="image-container">
+        <img src="/Users/rustymyers/Desktop/Robot_Arm/images/rpi5.png" alt="Raspberry Pi Setup">
+        <p class="fig-caption"><strong>Fig. 1.</strong> rpi5 show with serial line for comunication running to arduino, mounted to side of power control box.</p>
+
+      </div>
+      
+      <h3>Motor Control & Stepper Systems</h3>
+      <p>Two NEMA 17 stepper motors (rated at ~2A) are controlled using TB6600 drivers and an Arduino. The system utilizes a 24V, 15A power supply, with buck converters stepping down the voltage for both the Arduino (approx. 8V) and the Raspberry Pi (5V). Safety measures such as proper grounding and fuse protection are implemented to minimize electrical issues.</p>
+      <div class="image-container">
+        <img src="/Users/rustymyers/Desktop/Robot_Arm/images/Power_setup.png" alt="Stepper Motor Setup">
+      </div>
+      <p>For more details on the electronics setup, visit <a href="https://example.com/electronics-resources" target="_blank">this resource</a>.</p>
+      
+      <h3>Fusing and Electrical Safety</h3>
+      <p>The design employs a single fuse on the AC input line to simplify the system, protecting against major electrical issues with one main fuse. While fusing every DC line is recommended by some to prevent hazards, the current setup leverages the built‑in protections of the stepper drivers, buck converters, and the MeanWell power supply. In future iterations, a circuit breaker might be added to the main DC output line feeding the power distributor, further enhancing safety and fault isolation.</p>
+    </section>
+
+    <!-- Control Systems & Software Integration -->
+    <section id="control">
+      <h2>Control Systems & Software Integration</h2>
+      <p>An Arduino controls the stepper motors with precise step and direction signals, implementing ramping logic for smooth acceleration and deceleration. A Python script (using PySerial) was developed for PC-side testing, while the Raspberry Pi is slated for higher-level control and networking tasks.</p>
+      <div class="image-container">
+        <img src="images/arduino_control.jpg" alt="Arduino Control Code">
+      </div>
+    </section>
+
+    <!-- Key Milestones & Breakthroughs -->
+    <section id="milestones">
+      <h2>Key Milestones & Breakthroughs</h2>
+      <ul>
+        <li>Validated that the 20T to 80T pulley system achieves a 4:1 reduction.</li>
+        <li>Implemented dual-motor control with smooth ramp-up/down logic.</li>
+        <li>Addressed electrical safety concerns including proper grounding and fuse usage.</li>
+        <li>Developed a solution for USB‑C power signaling for the Raspberry Pi 5 using dummy breakouts.</li>
+      </ul>
+      <p>For a detailed project timeline, check out <a href="https://example.com/timeline" target="_blank">our timeline resource</a>.</p>
+    </section>
+
+    <!-- Additional Resources & Product Links -->
+    <section id="resources">
+      <h2>Additional Resources & Product Links</h2>
+      <p>Below are links to the products, materials, and additional resources used throughout the project:</p>
+      <ul>
+        <li><a href="https://example.com/product1" target="_blank">NEMA 17 Stepper Motor</a></li>
+        <li><a href="https://example.com/product2" target="_blank">TB6600 Stepper Driver</a></li>
+        <li><a href="https://example.com/product3" target="_blank">Pololu D36V50F5 Buck Converter</a></li>
+        <li><a href="https://example.com/product4" target="_blank">24V 15A Power Supply</a></li>
+      </ul>
+    </section>
+
+    <!-- Conclusion -->
+    <section id="conclusion">
+      <h2>Conclusion</h2>
+      <p>This documentation reflects the iterative process of designing a robust robotic arm and its supporting power and control systems. From mechanical innovations to complex power management, each step has provided valuable insights that will help guide future projects. Updates will be provided as further testing and refinements are completed.</p>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 Robotic Arm Project. All rights reserved.</p>
+  </footer>
+</body>
+</html>
