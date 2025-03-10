@@ -31,33 +31,44 @@
       </div>
     </section>
 
-    <!-- Mechanical Transmission & Motion Control -->
     <section id="mechanical">
       <h2>Mechanical Transmission & Motion Control</h2>
-      <h3>Pulley to Gear Ratio Insights</h3>
-      <p>A 20‑tooth driving pulley paired with an 80‑tooth driven pulley results in a 4:1 speed reduction. This is functionally equivalent to a single‑stage planetary gearset. For instance, a sun gear with 24 teeth and a ring gear with 72 teeth yields a 4:1 ratio using the formula:</p>
-      <p><strong>Gear Ratio = 1 + (Ring Teeth / Sun Teeth) = 1 + (72 / 24) = 4:1</strong></p>
-      <div class="image-container">
-        <img src="images/mechanical_diagram.jpg" alt="Mechanical Diagram">
-      </div>
-      
-      <h3>Additional Gear Setup for the Rotational Base</h3>
-      <p>For the rotational base, an alternative gear setup is employed using a 15‑tooth pinion gear paired with a 108‑tooth hub mount gear, both sourced from GoBilda:</p>
+    
+      <h3>Overview of the Transmission System</h3>
+      <p>The robotic arm employs a dual-stage transmission system designed to maximize torque output and precision control. This transmission combines two distinct stages: a pulley-based initial reduction followed by a gear-based reduction. Together, these stages significantly amplify torque and improve positional accuracy.</p>
+    
+      <h3>Stage 1: Pulley-Based Reduction</h3>
+      <p>The initial stage utilizes a <strong>belt-driven pulley system</strong>, comprising a <strong>20-tooth driving pulley</strong> and an <strong>80-tooth driven pulley</strong>, resulting in a mechanical speed reduction ratio of <strong>4:1</strong></p>
+    
+      <p class="equation"><strong>Gear Ratio (Stage 1) = 1 + Driven Gear Teeth / Driving Gear Teeth = 80 / 20 = 4:1</strong></p>
+    
+      <h3>Stage 2: Gear-Based Reduction (Rotational Base)</h3>
+      <p>The second stage incorporates gears for further reduction, specifically designed to control the robotic arm's <strong>rotational base</strong>. This stage consists of a <strong>15-tooth pinion gear</strong> driving a <strong>108-tooth hub-mounted gear</strong>, both sourced from GoBilda:</p>
+    
       <ul>
-        <li><a href="https://www.gobilda.com/2303-series-steel-mod-0-8-pinion-gear-6mm-d-bore-15-tooth/" target="_blank">15‑Tooth Pinion Gear</a></li>
-        <li><a href="https://www.gobilda.com/2302-series-aluminum-mod-0-8-hub-mount-gear-32mm-bore-108-tooth/" target="_blank">108‑Tooth Hub Mount Gear</a></li>
+        <li><a href="https://www.gobilda.com/2303-series-steel-mod-0-8-pinion-gear-6mm-d-bore-15-tooth/" target="_blank">15-Tooth Pinion Gear</a></li>
+        <li><a href="https://www.gobilda.com/2302-series-aluminum-mod-0-8-hub-mount-gear-32mm-bore-108-tooth/" target="_blank">108-Tooth Hub Mount Gear</a></li>
       </ul>
-      <p>This combination provides a reduction ratio of approximately 7.2:1 (108 ÷ 15). Used alongside the timing pulley's 4:1 reduction, this setup enhances the drive for the rotational base by providing increased torque and refined motion control.</p>
-      
-      <h3>Robotic Arm Motion Control</h3>
-      <p>The design incorporates a NEMA 17 stepper motor with a GT2 timing pulley system. Two approaches were considered: a belt-driven mechanism versus a direct pivoting joint with high-quality bearings for smooth rotation and precision.</p>
-      <p>For further mechanical details, visit <a href="https://example.com/mechanical-resources" target="_blank">this resource</a>.</p>
-      <div class="image-container">
-        <img src="images/gearbox.png" alt="Raspberry Pi Setup">
-        <p class="fig-caption"><strong>Fig. 1.</strong>Gearbox 28:1 reduction</p>
-
+    
+      <p>This gear pairing achieves a further <strong>7.2:1</strong> reduction:</p>
+    
+      <p><strong>Gear Ratio (Stage 2) = Driven Gear Teeth / Driving Gear Teeth = 108 / 15 = 7.2:1</strong></p>
+    
+      <h3>Total Reduction Calculation</h3>
+      <p>The combination of both pulley and gear stages provides an overall reduction ratio that multiplies the individual stage ratios:</p>
+    
+      <p><strong>Total Reduction = Stage 1 × Stage 2 = 4 × 7.2 = 28.8:1</strong></p>
+    
+      <p>This high total reduction ratio ensures the robotic arm has sufficient torque and precise control for smooth, accurate movements.</p>
+    
+      <div class="figure">
+        <img src="images/gearbox.png" alt="Complete Mechanical Transmission">
+        <p class="fig-caption"><strong>Fig. 1.</strong> Complete mechanical transmission with the dual-stage reduction.</p>
       </div>
-    </section>
+    
+      <h3>Stepper Motor Integration & Motion Control</h3>
+      <p>A <strong>NEMA 17 stepper motor</strong> paired with a <strong>GT2 timing pulley</strong> drives the system. Throughout the design, considerations included whether to directly pivot joints with bearings or utilize a belt-driven approach. Ultimately, the belt-driven design was favored for its flexibility, ease of adjustment, and reliable power transmission.</p>
+    
 
     <!-- Electronics & Power Management -->
     <section id="electronics">
