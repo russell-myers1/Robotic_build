@@ -25,7 +25,7 @@
     <!-- Introduction Section -->
     <section id="introduction">
       <h2>Introduction</h2>
-      <p>This article documents the journey of building a robotic arm, integrating mechanical engineering with advanced electronics and control systems. It covers pulley ratios, gear setups, power system design for a Raspberry Pi 5, and the challenges overcome in creating a precise motion control system.</p>
+      <p>This article documents the journey of building a robotic arm, integrating mechanical engineering with electronics and control systems. It covers pulley ratios, gear setups, power system design for a Raspberry Pi 5, and the challenges overcome in creating a precise motion control system.</p>
       <div class="image-container">
         <img src="images/header.jpg" alt="Project Header Image">
       </div>
@@ -74,7 +74,7 @@
     <section id="electronics">
       <h2>Electronics & Power Management</h2>
       <h3>Powering the Raspberry Pi 5</h3>
-      <p>The objective is to power the Raspberry Pi 5 using a 12V 12A power supply stepped down to 5V by a Pololu D36V50F5 buck converter. The design intends to power the Pi through its USB‑C port, which requires a resistor network (5.1kΩ pull‑down on the CC pins) to signal a valid 5V source.</p>
+      <p>The objective is to power the Raspberry Pi 5 using a 24V 15A power supply stepped down to 5V by a Pololu D36V50F5 buck converter. The design intends to power the Pi through its USB‑C port, which requires a resistor network (5.1kΩ pull‑down on the CC pins) to signal a valid 5V source.</p>
       <p><strong>Important Note:</strong> There is an untested issue regarding the USB‑C Power Delivery (PD) handshake required by the Raspberry Pi 5. Although the Pololu converter is designed to provide a stable 5V/5A output, some resources indicate potential random shutdowns or power warnings. An alternative is to power the Pi via its GPIO pins, though that method lacks the inherent fail safes of the dedicated USB‑C interface. Once the system is implemented, further updates will be provided on its performance and stability.</p>
       <div class="image-container">
         <img src="images/rpi5.png" alt="Raspberry Pi Setup">
@@ -87,8 +87,8 @@
       <div class="image-container">
         <img src="images/Power_setup.png" alt="Stepper Motor Setup">
       </div>
-      <p>For more details on the electronics setup, visit <a href="https://example.com/electronics-resources" target="_blank">this resource</a>.</p>
-      
+     <!-- <p>For more details on the electronics setup, visit <a href="https://example.com/electronics-resources" target="_blank">this resource</a>.</p>
+    -->
       <h3>Fusing and Electrical Safety</h3>
       <p>The design employs a single fuse on the AC input line to simplify the system, protecting against major electrical issues with one main fuse. While fusing every DC line is recommended by some to prevent hazards, the current setup leverages the built‑in protections of the stepper drivers, buck converters, and the MeanWell power supply. In future iterations, a circuit breaker might be added to the main DC output line feeding the power distributor, further enhancing safety and fault isolation.</p>
     </section>
@@ -98,38 +98,38 @@
       <h2>Control Systems & Software Integration</h2>
       <p>An Arduino controls the stepper motors with precise step and direction signals, implementing ramping logic for smooth acceleration and deceleration. A Python script (using PySerial) was developed for PC-side testing, while the Raspberry Pi is slated for higher-level control and networking tasks.</p>
       <div class="image-container">
-        <img src="images/arduino_control.jpg" alt="Arduino Control Code">
+       <!-- <img src="images/arduino_control.jpg" alt="Arduino Control Code">-->
       </div>
     </section>
 
-    <!-- Key Milestones & Breakthroughs -->
+
+    <!-- Key Milestones & Breakthroughs 
     <section id="milestones">
       <h2>Key Milestones & Breakthroughs</h2>
       <ul>
-        <li>Validated that the 20T to 80T pulley system achieves a 4:1 reduction.</li>
         <li>Implemented dual-motor control with smooth ramp-up/down logic.</li>
         <li>Addressed electrical safety concerns including proper grounding and fuse usage.</li>
         <li>Developed a solution for USB‑C power signaling for the Raspberry Pi 5 using dummy breakouts.</li>
       </ul>
       <p>For a detailed project timeline, check out <a href="https://example.com/timeline" target="_blank">our timeline resource</a>.</p>
-    </section>
+    </section>-->
 
     <!-- Additional Resources & Product Links -->
     <section id="resources">
       <h2>Additional Resources & Product Links</h2>
       <p>Below are links to the products, materials, and additional resources used throughout the project:</p>
       <ul>
-        <li><a href="https://example.com/product1" target="_blank">NEMA 17 Stepper Motor</a></li>
-        <li><a href="https://example.com/product2" target="_blank">TB6600 Stepper Driver</a></li>
-        <li><a href="https://example.com/product3" target="_blank">Pololu D36V50F5 Buck Converter</a></li>
-        <li><a href="https://example.com/product4" target="_blank">24V 15A Power Supply</a></li>
+       <!-- <li><a href="https://example.com/product1" target="_blank">NEMA 17 Stepper Motor</a></li>
+        <li><a href="https://example.com/product2" target="_blank">TB6600 Stepper Driver</a></li>-->
+        <li><a href="https://docs.google.com/document/d/e/2PACX-1vRQo-uA_4F2jpZsqzc1i8XGAKAEL3xT4OlK_OURHI4Yg2Ikd5lOTjWoamFOF3h-Bg/pub" target="_blank">Pololu D36V50F5 Buck Converter</a></li>
+      <!--  <li><a href="https://example.com/product4" target="_blank">24V 15A Power Supply</a></li>-->
       </ul>
     </section>
 
     <!-- Conclusion -->
     <section id="conclusion">
       <h2>Conclusion</h2>
-      <p>This documentation reflects the iterative process of designing a robust robotic arm and its supporting power and control systems. From mechanical innovations to complex power management, each step has provided valuable insights that will help guide future projects. Updates will be provided as further testing and refinements are completed.</p>
+      <p>This documentation reflects the iterative process of designing a robust robotic arm and its supporting power and control systems. From mechanical innovations to power management, each step has provided valuable insights that will help guide future projects. Updates will be provided as further testing and refinements are completed.</p>
     </section>
   </div>
   <footer>
