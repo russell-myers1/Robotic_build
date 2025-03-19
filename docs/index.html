@@ -114,18 +114,59 @@
       <p>For a detailed project timeline, check out <a href="https://example.com/timeline" target="_blank">our timeline resource</a>.</p>
     </section>-->
 
-    <!-- Additional Resources & Product Links -->
-    <section id="resources">
-      <h2>Additional Resources & Product Links</h2>
-      <p>Below are links to the products, materials, and additional resources used throughout the project:</p>
-      <ul>
-       <!-- <li><a href="https://example.com/product1" target="_blank">NEMA 17 Stepper Motor</a></li>
-        <li><a href="https://example.com/product2" target="_blank">TB6600 Stepper Driver</a></li>-->
-        <li><a href="https://docs.google.com/document/d/e/2PACX-1vRQo-uA_4F2jpZsqzc1i8XGAKAEL3xT4OlK_OURHI4Yg2Ikd5lOTjWoamFOF3h-Bg/pub" target="_blank">Pololu D36V50F5 Buck Converter</a></li>
-      <!--  <li><a href="https://example.com/product4" target="_blank">24V 15A Power Supply</a></li>-->
-      </ul>
-    </section>
 
+    <section id="original-setup-limitations">
+      <h2>Original Setup & Adafruit Stepper Driver Limitations</h2>
+      <p>
+        Before transitioning to the current build, the face tracking system was powered by an 
+        <strong>Adafruit Stepper Motor Hat</strong> directly attached to the Raspberry Pi. While 
+        this setup confirmed the feasibility of hardware-software integration and provided a 
+        simplified platform for testing face detection, it also introduced several limitations:
+      </p>
+      <ul>
+        <li>
+          <strong>Current Limit (~0.5 A/phase):</strong> The onboard driver and MOSFETs of the Adafruit board 
+          are restricted to lower currents, making it unsuitable for larger motors requiring higher torque.
+        </li>
+        <li>
+          <strong>Limited Microstepping Control:</strong> The Hat’s hardware supports a fixed set of stepping 
+          modes (e.g., single, double, interleaved, and microstepping), but doesn’t offer the finer 
+          microstepping granularity available on dedicated drivers like TB6600 or TMC-series drivers.
+        </li>
+        <li>
+          <strong>Library Constraints:</strong> Adafruit’s dedicated Python library for the Stepper Motor Hat 
+          is simple to use, but also somewhat restrictive in speed and step rate due to the underlying 
+          hardware design.
+        </li>
+      </ul>
+      <p>
+        Despite these constraints, this initial setup provided an invaluable proof of concept. The system 
+        was able to <strong>detect and track faces</strong> with the Raspberry Pi camera, 
+        demonstrating the potential of an integrated hardware-software solution. This experience 
+        ultimately guided the decision to adopt more robust, higher-current drivers and a more 
+        mechanically capable system for the next phase of the project.
+      </p>
+      <div class="image-container">
+        <!-- Update src to match your file path -->
+        <img src="/Users/rustymyers/Desktop/Robotic_build/Robotic_build/docs/original_Cam.png" alt="Original setup with Adafruit Stepper Hat and Raspberry Pi camera">
+        <p class="fig-caption">
+          <strong>Fig. X.</strong> The original face tracking prototype featuring an Adafruit Stepper Motor Hat. 
+          While sufficient for testing, this hardware imposed current and microstepping limitations.
+        </p>
+      </div>
+    </section>
+    
+        <!-- Additional Resources & Product Links -->
+        <section id="resources">
+          <h2>Additional Resources & Product Links</h2>
+          <p>Below are links to the products, materials, and additional resources used throughout the project:</p>
+          <ul>
+           <!-- <li><a href="https://example.com/product1" target="_blank">NEMA 17 Stepper Motor</a></li>
+            <li><a href="https://example.com/product2" target="_blank">TB6600 Stepper Driver</a></li>-->
+            <li><a href="https://docs.google.com/document/d/e/2PACX-1vRQo-uA_4F2jpZsqzc1i8XGAKAEL3xT4OlK_OURHI4Yg2Ikd5lOTjWoamFOF3h-Bg/pub" target="_blank">Pololu D36V50F5 Buck Converter</a></li>
+          <!--  <li><a href="https://example.com/product4" target="_blank">24V 15A Power Supply</a></li>-->
+          </ul>
+        </section>
     <!-- Conclusion -->
     <section id="conclusion">
       <h2>Conclusion</h2>
